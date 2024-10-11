@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--MyBatis에서 사용하는 xmlMapper file - java코드와 DB간의 Mapping을 설정-->
+<mapper namespace="com.orgpgm.todopro.mapper.TodoMapper">
+    <!--  Mapper file의 경로  -->
+    <select id="getTime" resultType="String">
+        <!-- id="getTime" 인터페이스에서 호출할 수 있는 메서드명, java코드에서 getTIme()하면 이 query문 실행 -->
+        <!--interface 구체적인 구현을 하지않고, 메서드의 이름, 반환타입, 매개변수 등을 정의. 구체적인 구현은 클래스에서!-->
+        select now()
+    </select>
+    <insert id="insert"> // insert(삽입작업)메서드의 이름을 insert라 정함.
+        insert into tbl_todo(title,dueDate,writer) values(#{title},#{dueDate},#{writer})
+    </insert>
+    <select id="getList" resultType="com.orgpgm.todopro.vo.TodoVo">
+        select * from tbl_todo
+    </select>
+
+</mapper>
