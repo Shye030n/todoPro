@@ -41,7 +41,7 @@
         serverValidResult['${error.getField()}'] = '${error.defaultMessage}'
         </c:forEach>
         console.log(serverValidResult)
-      </script>--%>
+      </script>
 
     </div>
   </div>
