@@ -22,7 +22,7 @@ import java.time.LocalDate;
                     // 클래스 내 존재하는 모든 필드에 값 전달 -> 객체 생성
 @NoArgsConstructor //아무 인자도 받지 않는 기본 생성자를 자동으로 생성
                     // 매개변수 없이 객체 생성
-public class TodoVo {
+public class TodoVO {
     //MySQL springdb에서 만든 tbl_todo와 통일시켜 변수 생성 (dto/TodoDTO에서 복붙)
     private Long tno;
     private String title;
