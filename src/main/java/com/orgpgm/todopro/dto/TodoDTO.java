@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Data
+@Data //getter,setter,toString() 자동 생성
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

@@ -63,7 +63,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${todoList}" var="dto">
+<%--                <c:forEach items="${todoList}" var="dto">--%>
+<%--버튼 클릭 후 웹페이지 접속이 안될 때 ERROR가 "행 [40]에서 [/WEB-INF/views/todo/register.jsp]을(를) 처리하는 중 예외 발생" 이런 거 뜨면 여기 주석처리 수정--%>
+                    <c:forEach items="${responseDTO.dtoList}" var="dto">
                     <tr>
                         <th scope="row">${dto.tno}</th>
                         <td><a href="/todo/read?tno=${dto.tno}">${dto.title}</a></td>

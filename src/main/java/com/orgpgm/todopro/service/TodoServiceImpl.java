@@ -1,6 +1,8 @@
 package com.orgpgm.todopro.service;
 
 
+import com.orgpgm.todopro.dto.PageRequestDTO;
+import com.orgpgm.todopro.dto.PageResponseDTO;
 import com.orgpgm.todopro.dto.TodoDTO;
 import com.orgpgm.todopro.mapper.TodoMapper;
 import com.orgpgm.todopro.vo.TodoVO;
@@ -55,5 +57,18 @@ public class TodoServiceImpl implements TodoService{
     public void modify(TodoDTO todoDTO) {
         TodoVO todoVO=modelMapper.map(todoDTO, TodoVO.class);
         todoMapper.update(todoVO);
+    }
+    @Override
+    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO){
+        List<TodoVO> voList=todoMapper.selectList(pageRequestDTO);
+        List<TodoDTO> dtoList=voList.stream().map(vo->modelMapper.map(vo,TodoDTO.class)).collect(Collectors.toUnmodifiableList());
+        int total=todoMapper.getCount(pageRequestDTO);
+        PageResponseDTO<TodoDTO> pageResponseDTO=PageResponseDTO.<TodoDTO>withAll()
+                .dtoList(dtoList)
+                .total(total)
+                .pageRequestDTO(pageRequestDTO)
+                .build();
+        return pageResponseDTO;
+
     }
 }

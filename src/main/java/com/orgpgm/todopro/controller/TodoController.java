@@ -1,6 +1,7 @@
 package com.orgpgm.todopro.controller;
 
 
+import com.orgpgm.todopro.dto.PageRequestDTO;
 import com.orgpgm.todopro.dto.TodoDTO;
 import com.orgpgm.todopro.service.TodoService;
 import jakarta.validation.Valid;
@@ -44,12 +45,21 @@ public class TodoController {
         return "redirect:/todo/list";
     }
 
-    @GetMapping("/list")
+   // @GetMapping("/list") //이거만 주석처리 해도, 밑에 메서드 실행 X
     public void list(Model model){
         log.info("list"); //  /WEB-INF/views/todo/list가 리턴
         List<TodoDTO> todoList= todoService.getAll(); // 모든 데이터 갖고 온 것을 왼쪽에 넣음
         model.addAttribute("todoList", todoList);
         //return "todo/list";
+    }
+    @GetMapping("/list")
+    public void list(PageRequestDTO pageRequestDTO, BindingResult bindingResult,Model model){
+        log.info("list");
+        if(bindingResult.hasErrors()){
+            pageRequestDTO=PageRequestDTO.builder().build();
+        }
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
+        model.addAttribute("responseDTO", todoService.getList(pageRequestDTO));
     }
 
     @PostMapping("/remove")

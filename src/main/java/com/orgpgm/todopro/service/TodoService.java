@@ -1,5 +1,7 @@
 package com.orgpgm.todopro.service;
 
+import com.orgpgm.todopro.dto.PageRequestDTO;
+import com.orgpgm.todopro.dto.PageResponseDTO;
 import com.orgpgm.todopro.dto.TodoDTO;
 import jakarta.validation.Valid;
 
@@ -10,7 +12,7 @@ public interface TodoService {
     List<TodoDTO> getAll();
     TodoDTO getOne(int tno);
     void remove(int tno);
-
-
     void modify(TodoDTO todoDTO);
+
+    PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO);
 }

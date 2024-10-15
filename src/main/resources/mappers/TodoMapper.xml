@@ -10,19 +10,31 @@
         <!--interface 구체적인 구현을 하지않고, 메서드의 이름, 반환타입, 매개변수 등을 정의. 구체적인 구현은 클래스에서!-->
         select now()
     </select>
+    <select id="selectList" resultType="com.orgpgm.todopro.vo.TodoVO">
+        select * from tbl_todo order by tno desc limit ${skip}, #{size}
+    </select>
+
+    <select id="getCount">
+        select count(tno) from tbl_todo
+    </select>
+
     <insert id="insert">
 <!--        // insert(삽입작업)메서드의 이름을 insert라 정함.-->
         insert into tbl_todo(title,dueDate,writer) values(#{title},#{dueDate},#{writer})
     </insert>
+
     <select id="selectOne" resultType="com.orgpgm.todopro.vo.TodoVO">
         select * from tbl_todo where tno=#{tno}
     </select>
+
     <select id="getList" resultType="com.orgpgm.todopro.vo.TodoVO">
         select * from tbl_todo
     </select>
+
     <delete id="delete">
         delete from tbl_todo where tno=#{tno}
     </delete>
+
     <update id="update">
         update tbl_todo set title=#{title}, dueDate=#{dueDate}, finished=#{finished} where tno=#{tno}
     </update>
