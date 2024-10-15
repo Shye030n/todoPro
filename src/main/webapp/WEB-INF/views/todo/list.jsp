@@ -54,7 +54,7 @@
 
             <form action="/todo/list" method="get">
                 <input type="hidden" name="size" value="${pageRequestDTO.size}">
-                
+
                 <div class="mb-3">
                              <%--  A?B:C A가 true이면 B, false면 C  --%>
                     <input type="checkbox" name="finished" ${pageRequestDTO.finished?"checked":""}>완료여부
@@ -148,7 +148,10 @@
                         return
                     }
                     const num = target.getAttribute("data-num")
-                    self.location = '/todo/list?page=\${num}&\${pageRequestDTO.link}'
+                    const formObj=document.querySelector("form");
+                    formObj.innerHTML+=`<input type='hidden' name='page' value='\${num}'>`
+                    formObj.submit()
+                    //    self.location=`/todo/list?page=\${num}&\${pageRequestDTO.link}`
                 })
             </script>
         </div>

@@ -11,7 +11,7 @@ import java.util.List;
 public class PageResponseDTO<E> {
     private int page; // 현재 페이지
     private int size; // 한 페이지당 보여줄 데이터 개수
-    private int total; // 전체 데이터
+    private int total; // 전체 데이터 개수
     private int start; // 시작 페이지 번호
     private int end; // 끝 페이지 번호
     private boolean prev; //이전 페이지의 존재 여부
