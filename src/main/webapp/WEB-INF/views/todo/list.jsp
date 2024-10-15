@@ -16,6 +16,7 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
 <body>
 <div class="container-fluid">
     <div class="row">
@@ -76,6 +77,46 @@
                 </c:forEach>
                 </tbody>
             </table>
+<%--     pagination 컴포넌트 활용 (웹페이지 밑 페이지 이동하는 부분)      --%>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <c:if test="${responseDTO.prev}">
+    <%-- <c:if test=" ">
+        jsp 에서 사용하는 jstl 조건문
+            => responseDTO의 객체인 next 속성이 true인 경우에만, 이 안에 내용 출력 --%>
+                        <li class="page-item">
+                            <a class="page-link" data-num="${responseDTO.start-1}" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </c:if>
+                    <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
+                    <%-- <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+                        <li class="page-item">
+                            <a class="page-link" data-num="${num}">${num}</a>
+                        </li>
+                    </c:forEach>
+                   <c:if test="${responseDTO.next}">
+                        <li class="page-item">
+                            <a class="page-link" data-num="${responseDTO.end+1}" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                   </c:if>
+                </ul>
+            </nav>
+            <script>
+                document.querySelector(".pagination").addEventListener("click", function (e) {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    const target = e.target
+                    if(target.tagName !== 'A') {
+                        return
+                    }
+                    const num = target.getAttribute("data-num")
+                    self.location = `/todo/list?page=\${num}`
+                })
+            </script>
         </div>
     </div>
 </div>

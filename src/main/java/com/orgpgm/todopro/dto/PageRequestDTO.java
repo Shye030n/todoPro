@@ -23,10 +23,10 @@ public class PageRequestDTO {
     private int page=1; //클라이언트의 화면에서 현재 페이지 (몇 쪽)
 
     @Builder.Default
-    @Min(value=10)
+    @Min(value=3)
     @Max(value=100)
     @Positive
-    private int size=10; //한 페이지 당 보여줄 항목 개수
+    private int size=3; //한 페이지 당 보여줄 항목 개수
 
     public int getSkip(){
         // 페이지 넘기기 계산
