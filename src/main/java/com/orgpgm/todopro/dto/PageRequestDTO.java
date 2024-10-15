@@ -77,8 +77,8 @@ public class PageRequestDTO {
         return builder.toString();
     }
     public boolean checkType(String type) {
-        if (types != null && types.length == 0) {
-            return true;
+        if (types == null || types.length == 0) {
+            return false;
         }
         return Arrays.stream(types).anyMatch(type::equals);
     }

@@ -56,17 +56,18 @@
                 <input type="hidden" name="size" value="${pageRequestDTO.size}">
 
                 <div class="mb-3">
-                    <input type="checkbox" name="finished">완료여부
+                             <%--  A?B:C A가 true이면 B, false면 C  --%>
+                    <input type="checkbox" name="finished" ${pageRequestDTO.finished?"checked":""}>완료여부
                 </div>
                 <div class="mb-3">
-                    <input type="checkbox" name="types" value="t">제목
-                    <input type="checkbox" name="types" value="w">작성자
+                    <input type="checkbox" name="types" value="t" ${pageRequestDTO.checkType("t")?"checked":""}>제목
+                    <input type="checkbox" name="types" value="w" ${pageRequestDTO.checkType("w")?"checked":""}>작성자
                     <%-- 제목에 체크하면 제목 검색, 작성자에 체크하면 작성자 검색--%>
-                    <input type="text"  name="keyword" class="form-control">
+                    <input type="text"  name="keyword" class="form-control" value="${pageRequestDTO.keyword}">
                 </div>
                 <div class="input-group mb-3 dueDateDiv">
-                    <input type="date" name="from" class="form-control">
-                    <input type="date" name="to" class="form-control">
+                    <input type="date" name="from" class="form-control" value="${pageRequestDTO.from}">
+                    <input type="date" name="to" class="form-control" value="${pageRequestDTO.to}">
                 </div>
                 <div class="input-group mb-3">
                     <div class="float-end">
