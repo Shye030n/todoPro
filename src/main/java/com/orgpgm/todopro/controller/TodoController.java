@@ -79,7 +79,7 @@ public class TodoController {
     }
 
     @GetMapping({"/read","/modify"})
-    public void read(@RequestParam("tno") int tno, Model model) {
+    public void read(@RequestParam("tno") int tno, PageRequestDTO pageRequestDTO, Model model) {
         log.info("read");
         TodoDTO todoDTO=todoService.getOne(tno);
         model.addAttribute("dto",todoDTO);

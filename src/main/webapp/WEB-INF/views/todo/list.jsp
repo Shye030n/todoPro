@@ -46,6 +46,39 @@
         </nav>
     </div>--%>
 <%@include file="../includes/header.jsp"%>
+<%--검색 부분 test.html에서 복붙해서 수정함--%>
+<div class="row-content">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Search</h5>
+
+            <form action="/todo/list" method="get">
+                <input type="hidden" name="size" value="${pageRequestDTO.size}">
+
+                <div class="mb-3">
+                    <input type="checkbox" name="finished">완료여부
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" name="types" value="t">제목
+                    <input type="checkbox" name="types" value="w">작성자
+                    <%-- 제목에 체크하면 제목 검색, 작성자에 체크하면 작성자 검색--%>
+                    <input type="text"  name="keyword" class="form-control">
+                </div>
+                <div class="input-group mb-3 dueDateDiv">
+                    <input type="date" name="from" class="form-control">
+                    <input type="date" name="to" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="float-end">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                        <button class="btn btn-info clearBtn" type="reset">Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="row-content">
     <div class="card">
         <div class="card-header">
@@ -69,7 +102,7 @@
                     <c:forEach items="${responseDTO.dtoList}" var="dto">
                     <tr>
                         <th scope="row">${dto.tno}</th>
-                        <td><a href="/todo/read?tno=${dto.tno}">${dto.title}</a></td>
+                        <td><a href="/todo/read?tno=${dto.tno}&${pageRequestDTO.link}">${dto.title}</a></td>
                         <td>${dto.writer}</td>
                         <td>${dto.dueDate}</td>
                         <td>${dto.finished}</td>
