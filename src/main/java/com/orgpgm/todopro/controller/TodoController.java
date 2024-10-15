@@ -31,7 +31,7 @@ public class TodoController {
     }
 
     @PostMapping("/register")
-    public String regisiterPost(@Valid TodoDTO todoDTO,
+    public String registerPost(@Valid TodoDTO todoDTO,
                                 BindingResult bindingResult,
                                 RedirectAttributes redirectAttributes) {
 

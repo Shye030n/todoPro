@@ -34,14 +34,14 @@
       </script>
       <%--${errors}--%>
 
-      <script>
-        const serverValidResult = {}
+<%--      <script>--%>
+<%--        const serverValidResult = {}--%>
 
-        <c:forEach items = "${errors}" var="error">
-        serverValidResult['${error.getField()}'] = '${error.defaultMessage}'
-        </c:forEach>
-        console.log(serverValidResult)
-      </script>
+<%--        <c:forEach items = "${errors}" var="error">--%>
+<%--        serverValidResult['${error.getField()}'] = '${error.defaultMessage}'--%>
+<%--        </c:forEach>--%>
+<%--        console.log(serverValidResult)--%>
+<%--      </script>--%>
 
     </div>
   </div>

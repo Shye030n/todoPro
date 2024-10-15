@@ -10,7 +10,8 @@
         <!--interface 구체적인 구현을 하지않고, 메서드의 이름, 반환타입, 매개변수 등을 정의. 구체적인 구현은 클래스에서!-->
         select now()
     </select>
-    <insert id="insert"> // insert(삽입작업)메서드의 이름을 insert라 정함.
+    <insert id="insert">
+<!--        // insert(삽입작업)메서드의 이름을 insert라 정함.-->
         insert into tbl_todo(title,dueDate,writer) values(#{title},#{dueDate},#{writer})
     </insert>
     <select id="selectOne" resultType="com.orgpgm.todopro.vo.TodoVO">
