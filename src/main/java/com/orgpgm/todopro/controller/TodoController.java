@@ -70,10 +70,11 @@ public class TodoController {
 
     }
     @PostMapping("/modify")
-    public String modify(TodoDTO todoDTO, RedirectAttributes redirectAttributes){
+    public String modify(TodoDTO todoDTO, PageRequestDTO pageRequestDTO, RedirectAttributes redirectAttributes){
         log.info("modify()"+todoDTO);
         todoService.modify(todoDTO);
         redirectAttributes.addAttribute("tno", todoDTO.getTno());
+        redirectAttributes.addFlashAttribute("pageRequestDTO", pageRequestDTO);
         return "redirect:/todo/read";
 
     }

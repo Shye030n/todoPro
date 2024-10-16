@@ -140,19 +140,30 @@
                 </ul>
             </nav>
             <script>
-                document.querySelector(".pagination").addEventListener("click", function (e) {
+
+                document.querySelector(".pagination").addEventListener("click", function (e){
                     e.preventDefault()
                     e.stopPropagation()
-                    const target = e.target
-                    if(target.tagName !== 'A') {
+                    const target=e.target
+                    if(target.tagName !== 'A'){
                         return
                     }
-                    const num = target.getAttribute("data-num")
+                    const num=target.getAttribute("data-num")
+                    16 hours ago
+
+                    todo finished_ff
                     const formObj=document.querySelector("form");
                     formObj.innerHTML+=`<input type='hidden' name='page' value='\${num}'>`
                     formObj.submit()
                     //    self.location=`/todo/list?page=\${num}&\${pageRequestDTO.link}`
-                })
+                },false)
+                document.querySelector(".clearBtn").addEventListener("click", function (e){
+                    e.preventDefault()
+                    e.stopPropagation()
+
+                    self.location ='/todo/list'
+
+                },false)
             </script>
         </div>
     </div>
